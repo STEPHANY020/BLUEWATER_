@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLUE WATER</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="loginScreen" class="login-container">
+    <div class="card">
+      <h1>BLUE WATER</h1>
+      <h3>Inicio de Sesión</h3>
+
+      <input type="text" id="username" placeholder="Usuario">
+      <input type="password" id="password" placeholder="Contraseña">
+
+      <button onclick="login()">Ingresar</button>
+
+      <p id="loginError"></p>
+    </div>
+  </div>
+
+  <!-- PANEL PRINCIPAL -->
+  <div id="mainPanel" class="panel hidden">
+    <div class="card">
+      <h1>Panel Principal BLUE WATER</h1>
+
+      <div class="grid">
+        <button onclick="openModule('rutas')">Rutas</button>
+        <button onclick="openModule('botellas')">Botellas</button>
+        <button onclick="openModule('sellos')">Sellos</button>
+        <button onclick="openModule('tapas')">Tapas</button>
+        <button onclick="openModule('etiquetas')">Etiquetas</button>
+        <button onclick="openModule('personal')">Personal</button>
+      </div>
+
+      <button class="general-pdf" onclick="generateGeneralPDF()">
+        Generar PDF General (Ganancias / Pérdidas)
+      </button>
+    </div>
+  </div>
+
+  <!-- PANTALLA DE MÓDULOS -->
+  <div id="moduleScreen" class="hidden">
+    <div class="card">
+      <button onclick="goHome()">Volver</button>
+
+      <h2 id="moduleTitle"></h2>
+
+      <div id="moduleContent"></div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO DE RUTAS -->
+  <template id="routeTemplate">
+    <div class="grid">
+      <button onclick="routeForm('Ruta 38')">Ruta 38</button>
+      <button onclick="routeForm('Ruta Puente de la A')">Ruta Puente de la A</button>
+      <button onclick="routeForm('Vergeles')">Vergeles</button>
+      <button onclick="routeForm('Pancho')">Pancho</button>
+    </div>
+  </template>
+
+  <!-- FORMULARIO DE INVENTARIO -->
+  <template id="inventoryTemplate">
+    <div class="grid">
+      <button onclick="inventoryForm(currentModule, 'Compra')">Compra</button>
+      <button onclick="inventoryForm(currentModule, 'Utilización')">Utilización</button>
+    </div>
+  </template>
+
+  <!-- FORMULARIO DE PERSONAL -->
+  <template id="personalTemplate">
+    <div class="grid">
+      <button onclick="personalForm('ISSAC')">ISSAC</button>
+      <button onclick="personalForm('RICARD')">RICARD</button>
+      <button onclick="personalForm('JARON')">JARON</button>
+    </div>
+  </template>
+
+  <!-- CONTENEDOR DE REGISTROS -->
+  <div id="recordsContainer" class="hidden">
+    <div class="card">
+      <h3>Registro</h3>
+      <div id="recordsTable"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© BLUE WATER - Sistema de Control Empresarial</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
